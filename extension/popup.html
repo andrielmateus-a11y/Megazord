@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body { font: 13px system-ui, sans-serif; width: 320px; margin: 0; color: #0f172a; }
+    header { background: #4f46e5; color: #fff; padding: 10px 14px; font-weight: 700; letter-spacing: .5px; }
+    main { padding: 12px 14px; }
+    label { display: block; font-size: 11px; color: #475569; margin: 8px 0 3px; }
+    input { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px; }
+    button { margin-top: 10px; padding: 7px 10px; border: 0; border-radius: 6px; background: #4f46e5; color: #fff; cursor: pointer; }
+    button.secondary { background: #e2e8f0; color: #0f172a; }
+    .status { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #94a3b8; }
+    .connected .dot { background: #16a34a; } .connecting .dot { background: #eab308; } .disconnected .dot, .not_configured .dot { background: #dc2626; }
+    .err { color: #b91c1c; font-size: 12px; margin-top: 4px; }
+    ul { list-style: none; padding: 0; margin: 8px 0 0; max-height: 120px; overflow: auto; font-size: 11px; color: #475569; }
+  </style>
+</head>
+<body>
+  <header>MEGAZORD · Firefox Bridge</header>
+  <main>
+    <div id="status" class="status"><span class="dot"></span><span id="statusText">…</span></div>
+    <div id="error" class="err"></div>
+    <label for="serverUrl">URL do backend MEGAZORD</label>
+    <input id="serverUrl" placeholder="http://localhost:3001" />
+    <label for="token">Token do bridge (Configurações → Firefox Containers)</label>
+    <input id="token" type="password" placeholder="mzb_..." />
+    <button id="save">Salvar e conectar</button>
+    <button id="reconnect" class="secondary">Reconectar</button>
+    <ul id="log"></ul>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

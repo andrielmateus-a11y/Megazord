@@ -1,0 +1,59 @@
+{
+  "name": "megazord",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MEGAZORD — Plataforma de prospecção, dados e Multi-WhatsApp",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "tsx watch --clear-screen=false src/backend/server.ts",
+    "dev:web": "vite",
+    "build": "npm run build:web && npm run build:api",
+    "build:web": "vite build",
+    "build:api": "tsc -p tsconfig.server.json",
+    "start": "node dist/server/backend/server.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.server.json --noEmit",
+    "test": "vitest run",
+    "db:migrate": "tsx src/db/migrate.ts",
+    "extension:zip": "cd extension && zip -r ../megazord-firefox-bridge.zip ."
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.3.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "exceljs": "^4.4.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0",
+    "pg": "^8.16.0",
+    "ws": "^8.18.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.15.0",
+    "@types/pg": "^8.11.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@types/supertest": "^6.0.2",
+    "@types/ws": "^8.18.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "concurrently": "^9.1.2",
+    "lucide-react": "^0.511.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.6.0",
+    "supertest": "^7.1.0",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.19.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.0"
+  }
+}

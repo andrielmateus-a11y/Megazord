@@ -1,0 +1,13 @@
+# Frontend (SPA) no Netlify. O backend Express roda em um serviço Node persistente
+# (Render, Railway, Fly.io, Cloud Run...). Defina VITE_API_URL no Netlify apontando para ele.
+[build]
+  command = "npm run build:web"
+  publish = "dist/web"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
